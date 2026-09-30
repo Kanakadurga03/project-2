@@ -1,0 +1,287 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#nav{
+    background-color: orangered;
+    height: 50px;  
+    display: flex; 
+    justify-content: space-between;
+    /* align-items: center; */
+}
+.logo{
+    color: white;
+}
+.logo h5 i{ 
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.menu-container {
+    position: relative;
+    z-index: 3000;
+    
+}
+
+
+/* HAMBURGER */
+
+.menu-btn{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 3001;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+   
+}
+.menu-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 285px;
+    height: 100vh;
+    z-index: 3000;
+    background-color: white;
+    overflow-y: auto;
+   
+}
+
+
+.menu-content {
+    position: relative;
+    min-height: 100vh;
+    padding: 70px 20px 20px;
+    background-color: white;
+
+     
+}
+
+
+.menu-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 3002;
+    border: none;
+    background: transparent;
+    color: rgb(245, 77, 16);
+    font-size: 25px;
+    cursor: pointer;
+   
+}
+
+
+.menu-content .btn {
+    width: 100%;
+    display: block;
+    text-align: left;
+    color: #555;
+    padding: 12px 0;
+    margin: 0;
+    text-decoration: none;
+     text-transform:lowercase;
+}
+
+
+/* banner */
+.banner{
+    background-image: url("./Assests/banner.jpeg");
+     width: 100%;
+    height: 550px;   
+}
+
+#btn input{
+    border-radius: 50px;
+    height: 50px;
+    width: 350px;
+    border: none;
+    padding-left: 30px;
+    
+}
+#btn i {
+
+     height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: orange;
+    border: 1px solid white;
+    text-align: center;
+    padding-top: 15px;
+    color: white;
+}
+   
+.banner h1{
+    color: white;
+    
+}
+
+.banner h4{
+    color: white;
+}
+.con{
+    text-align: center;
+    padding-top: 150px;
+    line-height: 5;
+}
+.Categories{
+    color: black;
+    margin-top: 50px;
+    margin-left: 20px;
+}
+.Categories hr {
+    border: none;
+    height: 3px;
+    background-color: orangered ;
+    opacity: 1;
+    width: 90px;
+    height: 5px;
+}
+#card{
+    display:flex;
+    flex-wrap:wrap;
+    gap:35px;
+    /* margin-left:10px; */
+    /* margin:30px; */
+    background-color:whitesmoke;
+    padding:30px;
+    
+}
+.pics{
+    /* border:1px solid black; */
+    background-color:white;
+    position:relative;
+    padding:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    border-radius: 5px;
+
+}
+.pics h6{
+    border:1px solid black;
+    border-style:none;
+    padding:5px 10px;
+    text-align:center;
+    background-color:orangered;
+    color:white;
+    position:absolute;
+    right:5px;
+    top:5px;
+    border-radius:5px;
+    text-transform:uppercase;   
+}
+#fun{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap:10px;
+    padding:40px;
+    margin-top:50px;
+
+}
+.filt
+{
+    margin-left:35px;
+
+}
+.filt h6{
+    border: 1px solid;
+    width: 100px;
+    text-align: center;
+   position: relative;
+   top: 40px;
+   border-radius: 40px;
+   background-color: white;
+   color: orangered;
+   border: none;
+   margin-left: 125px;
+}
+
+.filt img{
+     border-radius: 5px;
+     height: 200px;
+    
+
+}
+.filt h5{
+    color: black;
+}
+.flit h2{
+    color: black;
+}
+
+.category-description {
+
+    margin: 30px 12px 50px;
+    padding: 15px;
+    border: 1px solid #f06a28;
+    background: #ffffff;
+}
+
+.category-description h2 {
+    color: #f06a28;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.category-description p {
+
+    color: #666;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.meals-title {
+    margin: 0 12px 25px;
+}
+
+.meals-title h2 {
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+.title-line {
+    width: 50px;
+    height: 3px;
+    background: #f06a28;
+    margin-top: 8px;
+}
+
+.meal-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    padding: 0 12px 30px;
+}
+
+
+.meal-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.meal-card img {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    display: block;
+}
+
+.meal-card img {
+    width: 300px;
+    height: 160px;
+}
+
+.meal-card h5 {
+
+    font-size: 11px;
+    line-height: 1.4;
+    margin: 8px;
+    color:black
+}
