@@ -289,10 +289,6 @@
     display: block;
 }
 
-.meal-card img {
-    width: 300px;
-    height: 160px;
-}
 
 .meal-card h5 {
 
@@ -301,21 +297,49 @@
     margin: 8px;
     color: black
 }
+/* /third page/ */
+/* =====================================================
+   THIRD PAGE CSS
+   ===================================================== */
+
+
+/* =====================================================
+   MEAL DES / BREADCRUMB
+   ===================================================== */
 
 .meal-des {
-    border: 1px solid;
+    border: 1px solid orangered;
     margin-top: 10px;
+    margin-left: 8px;
     color: white;
     background-color: orangered;
     padding: 8px;
-    width: 100px;
-    margin-left: 8px;
+    width: 1500px;
+    min-width: 100px;
+    box-sizing: border-box;
 }
+
+.meal-des h4 {
+    margin: 0;
+    font-size: 14px;
+    color: white;
+}
+
+
+/* =====================================================
+   MEAL DETAILS TITLE
+   ===================================================== */
 
 .data12 {
     color: black;
     margin-top: 40px;
     margin-left: 8px;
+}
+
+.data12 h3 {
+    margin: 0 0 10px;
+    font-size: 22px;
+    color: black;
 }
 
 .data12 hr {
@@ -324,152 +348,162 @@
     opacity: 1;
     border: none;
     height: 5px;
+    margin-left: 0;
 }
 
-.iconical img {
-    width: 50%;
-    padding: 10px;
-    display: inline-block;
-    margin-left: 25px;
 
-}
+/* =====================================================
+   MAIN IMAGE + DETAILS CONTAINER
+   ===================================================== */
 
-.menu-container {
+.mealcont {
     display: flex;
-    gap: 40px;
+    gap: 30px;
     align-items: flex-start;
-    margin: 30px 0;
+    margin: 30px 20px;
+    width: calc(100% - 40px);
+    box-sizing: border-box;
 }
 
 
+/* =====================================================
+   LEFT SIDE - IMAGE
+   ===================================================== */
 
-/* left */
 .iconical {
-    width: 40px;
+    width: 40%;
+    min-width: 300px;
 }
 
 .iconical img {
-    width: 100px;
+    width: 100%;
+    max-width: 450px;
+    height: 350px;
+    object-fit: cover;
+    padding: 10px;
+    display: block;
     border-radius: 15px;
+    box-sizing: border-box;
 }
 
 
+/* =====================================================
+   RIGHT SIDE - DETAILS
+   ===================================================== */
 
-/* right */
+.detailes22 {
+    width: 60%;
+    box-sizing: border-box;
+}
+
 .jhanu {
-    width: 60px;
+    width: 100%;
+    margin-left: 0;
+    box-sizing: border-box;
 }
+
+
+/* Meal name */
 
 .jhanu h3 {
     color: orangered;
+    margin: 0 0 10px;
+    font-size: 24px;
 }
 
+
+/* Horizontal line */
+
 .jhanu hr {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     background-color: orangered;
     opacity: 1;
     border: none;
-    height: 5px;
+    border-top: 1px solid orangered;
+    height: 1px;
+    margin: 0 0 20px;
 }
 
-.jhanu h4,
-p {
+
+/* Category and Area */
+
+.jhanu h4 {
+    font-size: 14px;
+    margin: 10px 0;
+    color: grey;
+}
+
+
+/*
+   Your JavaScript already writes:
+
+   Category: ${mealData.strCategory}
+   Area: ${mealData.strArea}
+
+   So we don't need ::before here.
+*/
+
+.jhanu h4::before {
+    content: "";
+}
+
+
+/* Source */
+
+.jhanu > p {
+    font-size: 13px;
+    margin: 8px 0;
+    color: #555;
+}
+
+.jhanu > p::before {
+    content: "Source: ";
     color: black;
+    font-size: 14px;
+    font-weight: bold;
 }
 
-.jhanu h6 {
-    width: 100px;
-    color: orangered;
-    padding: 2px;
-    text-align: center;
-    ;
-}
 
-.detailes22 {
-    margin-left: 70px;
-}
-/* measure */
-.manu2{
-   margin-top:50px;
-   border:1px solid;
-   margin:10px;
-   padding:10px; 
-}
-/* main des area */
-.detailes22 {
-  width:60%;  
-}
-.jhanu h3{
-    margin:0 0 10 px;
-    font-size:24px;
-}
-.jhanu hr{
-    border:none;
-    border-top:1px solid orangered;
-    margin-bottom:20px;
-}
-.jhanu{
-    margin-left:250px;
-}
-.jhanu h4{
-    font-size:14px;
-    margin:10px 0;
-    color:grey;
-}
-/* source */
-.jhanu > p{
-    font-size:13px;
-    margin:8px 0;
-    color:#555;  
-}
-.jhanu p::before{
-    content:"source:";
-    color:black;
-    font-size:15px;
-    font-weight:bold;
-}
+/* Tags */
 
-/* tag */
 .jhanu h6 {
     font-size: 13px;
-    color:orangered;
-   
+    color: orangered;
+    margin: 10px 0;
 }
-.jhanu h6::before{
-    content: "Tag:";
+
+.jhanu h6::before {
+    content: "Tag: ";
     color: black;
     font-weight: bold;
 }
-.jhanu h4::before{
-    content: "Category:";
-     color: black;
-    font-size: 15px;
-    font-weight: bold;
-}
 
 
-/* ings */
+/* =====================================================
+   INGREDIENTS
+   ===================================================== */
+
 .anusha {
     margin-top: 20px;
-    border: 1px solid;
-    margin: 5px;
-    padding: 5px;
-    /* margin-left: 250px; */
-}
-.anusha {
+    border: 1px solid #eeeeee;
     background-color: #f15a16;
     width: 100%;
     max-width: 500px;
     padding: 18px 20px;
     box-sizing: border-box;
     color: white;
+
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 15px;
     row-gap: 8px;
-    margin-top: 20px;
+
+    counter-reset: ingredient;
 }
 
+
+/* Ingredients heading */
 
 .anusha h5 {
     grid-column: 1 / -1;
@@ -480,6 +514,8 @@ p {
 }
 
 
+/* Each ingredient */
+
 .anusha p {
     margin: 0;
     color: white;
@@ -487,126 +523,541 @@ p {
     line-height: 20px;
     position: relative;
     padding-left: 23px;
+
+    counter-increment: ingredient;
 }
 
 
+/* Ingredient number */
+
 .anusha p::before {
     content: counter(ingredient);
+
     position: absolute;
     left: 0;
     top: 1px;
+
     width: 17px;
     height: 17px;
+
     border-radius: 50%;
+
     background-color: #1aa7c9;
     color: white;
+
     font-size: 9px;
     font-weight: bold;
+
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* count*/
-.anusha {
-    counter-reset: ingredient;
-}
-.anusha p {
-    counter-increment: ingredient;
-}
+
+/* Hide empty ingredients */
+
 .anusha p:empty {
     display: none;
 }
 
 
+/* =====================================================
+   MEASURES
+   ===================================================== */
 
 .manu2 {
-     width: 98%;
-    margin-left: 20px;
+    width: calc(100% - 40px);
+    margin: 30px 20px 10px;
     max-width: none;
+
     padding: 12px 30px;
+
     border: 1px solid #eeeeee;
+
     box-sizing: border-box;
+
     display: grid;
     grid-template-columns: 1fr 1fr;
+
     column-gap: 80px;
     row-gap: 12px;
 }
 
+
+/* Measure heading */
+
 .manu2 h5 {
     grid-column: 1 / -1;
+
     margin: 0 0 10px;
+
     font-size: 14px;
     font-weight: normal;
+
     color: #333;
 }
 
+
+/* Measure text */
 
 .manu2 p {
     position: relative;
+
     margin: 0;
+
     padding-left: 20px;
+
     font-size: 13px;
+
     color: #555;
+
     line-height: 20px;
 }
+
+
+/* Orange bullet */
+
 .manu2 p::before {
     content: "";
+
     position: absolute;
+
     left: 2px;
     top: 7px;
+
     width: 6px;
     height: 6px;
+
     border-radius: 50%;
+
     background-color: #f15a16;
 }
 
+
+/* =====================================================
+   INSTRUCTIONS
+   ===================================================== */
+
 .innner {
-    width: 98%;
+    width: calc(100% - 40px);
     max-width: none;
-    margin: 25px 0 40px;
+
+    margin: 25px 20px 40px;
+
     padding: 18px 30px;
+
     border: 1px solid #eeeeee;
+
     background-color: #fff;
+
     box-sizing: border-box;
-    margin-left: 20px;
 }
+
+
+/* Instructions heading */
 
 .innner h5 {
     margin: 0 0 15px;
+
     padding-bottom: 10px;
+
     border-bottom: 1px solid #f15a16;
+
     font-size: 14px;
+
     font-weight: normal;
+
     color: #333;
 }
 
+
+/* =====================================================
+   INSTRUCTION LIST
+   ===================================================== */
+
 .instruction-list {
     display: flex;
-    align-items: flex-start;
-    margin-bottom: 12px;
+    flex-direction: column;
+    gap: 12px;
+
+    width: 100%;
 }
+
+
+/* Individual instruction */
+
+.inst-item {
+    display: flex;
+    align-items: flex-start;
+
+    margin-bottom: 5px;
+
+    width: 100%;
+}
+
+
+/* Check box */
 
 .check {
     width: 12px;
     height: 12px;
+
     border: 1px solid #f15a16;
+
     color: #f15a16;
+
     font-size: 8px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     margin-top: 3px;
     margin-right: 10px;
+
     flex-shrink: 0;
 }
 
 
+/* Instruction text */
+
 .instruction-list p {
     margin: 0;
     padding: 0;
+
     color: #555;
+
     font-size: 12px;
+
     line-height: 1.7;
+
     flex: 1;
+}
+
+
+/* =====================================================
+   ERROR MESSAGE
+   ===================================================== */
+
+.error {
+    width: 90%;
+
+    margin: 40px auto;
+
+    padding: 30px;
+
+    text-align: center;
+
+    border: 1px solid #eeeeee;
+
+    background-color: #fff;
+}
+
+.error h2 {
+    color: orangered;
+    margin-bottom: 10px;
+}
+
+.error p {
+    color: #555;
+}
+
+
+/* Keep page content within the viewport */
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Laptop and desktop */
+@media (min-width: 901px) {
+    .banner {
+        background-size: cover;
+        background-position: center;
+    }
+
+    #fun,
+    .meal-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .filt {
+        margin-left: 0;
+    }
+
+    .filt img,
+    .meal-card img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .meal-des {
+        width: calc(100% - 16px);
+    }
+
+    .mealcont {
+        align-items: flex-start;
+    }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .banner {
+        height: 450px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .con {
+        padding: 120px 20px 0;
+        line-height: 3.5;
+    }
+
+    #card {
+        gap: 20px;
+        padding: 24px;
+        justify-content: center;
+    }
+
+    #fun,
+    .meal-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        padding: 24px;
+    }
+
+    .filt {
+        margin-left: 0;
+    }
+
+    .filt img,
+    .meal-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
+
+    .filt h6 {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .meal-des {
+        width: calc(100% - 16px);
+    }
+
+    .mealcont {
+        gap: 20px;
+    }
+
+    .iconical {
+        width: 40%;
+        min-width: 0;
+    }
+
+    .detailes22 {
+        width: 60%;
+        min-width: 0;
+    }
+
+    .anusha {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .manu2 {
+        column-gap: 24px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+    #nav {
+        align-items: center;
+    }
+
+    .menu-panel {
+        width: min(285px, 85vw);
+    }
+
+    .banner {
+        height: 380px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .con {
+        padding: 95px 15px 0;
+        line-height: 2.5;
+    }
+
+    .banner h1 {
+        font-size: 28px;
+    }
+
+    .banner h4 {
+        font-size: 16px;
+    }
+
+    #btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        padding: 0 10px;
+    }
+
+    #btn input {
+        width: min(75vw, 350px);
+        min-width: 0;
+        padding-left: 18px;
+    }
+
+    #btn i {
+        flex: 0 0 50px;
+    }
+
+    .Categories {
+        margin: 30px 12px 0;
+    }
+
+    #card {
+        gap: 14px;
+        padding: 18px 12px;
+        justify-content: center;
+    }
+
+    #fun,
+    .meal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding: 18px 12px 24px;
+    }
+
+    .filt {
+        margin-left: 0;
+        min-width: 0;
+    }
+
+    .filt img,
+    .meal-card img {
+        width: 100%;
+        height: 145px;
+        object-fit: cover;
+    }
+
+    .filt h6 {
+        top: 28px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .category-description {
+        margin: 20px 12px 35px;
+    }
+
+    .meal-des {
+        width: calc(100% - 10px);
+        margin-left: 5px;
+    }
+
+    .data12 {
+        margin: 28px 10px 0;
+    }
+
+    .mealcont {
+        flex-direction: column;
+        width: calc(100% - 20px);
+        margin: 20px 10px;
+        gap: 16px;
+    }
+
+    .iconical,
+    .detailes22 {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .iconical img {
+        width: 100%;
+        max-width: none;
+        height: 280px;
+    }
+
+    .anusha {
+        max-width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .manu2 {
+        width: calc(100% - 20px);
+        margin: 24px 10px 10px;
+        padding: 12px 15px;
+        grid-template-columns: 1fr;
+        column-gap: 0;
+    }
+
+    .manu2 h5 {
+        grid-column: 1;
+    }
+
+    .innner {
+        width: calc(100% - 20px);
+        margin: 20px 10px 30px;
+        padding: 16px 15px;
+    }
+
+    .error {
+        width: calc(100% - 24px);
+        padding: 22px 15px;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 400px) {
+    .banner {
+        height: 330px;
+    }
+
+    .con {
+        padding-top: 75px;
+        line-height: 2.2;
+    }
+
+    .banner h1 {
+        font-size: 24px;
+    }
+
+    #btn input {
+        width: calc(100% - 58px);
+    }
+
+    #card {
+        gap: 10px;
+        padding: 14px 8px;
+    }
+
+    #fun,
+    .meal-grid {
+        grid-template-columns: 1fr;
+        padding: 16px 12px 22px;
+    }
+
+    .filt img,
+    .meal-card img {
+        height: 190px;
+    }
+
+    .iconical img {
+        height: 230px;
+    }
+
+    .anusha {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
 }

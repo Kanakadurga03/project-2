@@ -15,6 +15,7 @@ async function user() {
     one11.innerHTML += result.join("");
 
 }
+
 user()
 
 
@@ -118,13 +119,22 @@ async function menu() {
         return;
     }
 
-    let meals = mealData.meals.map((meal) => {
-        return `
-            <div class="meal-card">
-            <img src="${meal.strMealThumb}">
-                <h5> ${meal.strMeal}</h5>
-         </div>`;
-    });
+let meals = mealData.meals.map((meal) => {
+    return `
+        <div class="meal-card">
+
+            <img 
+                src="${meal.strMealThumb}"
+                alt="${meal.strMeal}"
+                onclick="note('${meal.strMeal.replace(/'/g, "\\'")}')"
+                style="cursor: pointer;"
+            >
+
+            <h5>${meal.strMeal}</h5>
+
+        </div>
+    `;
+});
 
     favour.innerHTML = ` ${description} ${mealsHeading}
         <div class="meal-grid">
@@ -136,131 +146,327 @@ if (document.getElementById("favour")) {
     menu();
 }
 
+// =====================================================
+// THIRD PAGE
+// =====================================================
+function note(mealName) {
 
-//////third page/////
-function note(third) {
-    window.open(`third.html?meal=${encodeURIComponent(third)}`, "_self");
+    window.location.href =
+        "third.html?meal=" + encodeURIComponent(mealName);
+
 }
+
+// =====================================================
+// GET MEAL DETAILS
+// =====================================================
 
 async function getMeal() {
-    let params = new URLSearchParams(window.location.search);
-    let meal = params.get("meal");
-    let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(meal)}`);
-    let data = await response.json();
-    let mealData = data.meals.find((item) => {
-        return item.strMeal.toLowerCase() === meal.toLowerCase();
-    });
 
-    let name = `
-        <div class="meal-des">
-          <h4> 🏡>>${mealData.strMeal} </h4>
-        </div>`;
+    // Get third page container
+    let inti = document.getElementById("inti");
 
-    let details =
-        `
-        <div class = "data12">
-        <h3>MEAL DETAILS</h3> <hr>
-        </div>
-        `
+    // If we are not on third page, stop
+    if (!inti) {
+        return;
+    }
 
-    let img = `
-          <div class="iconical">
-        <img src="${mealData.strMealThumb}">
-         </div>
-        `;
+    try {
 
-    let desc = `
-      <div class="detailes22">
-         <div class = "jhanu">
-         <h3>${mealData.strMeal}</h3> <hr>
-         <h4>${mealData.strCategory}</h4>
-         <p> ${mealData.strSource}</p>
-         <h6>${mealData.strTags}</h6>
+        // Get meal name from URL
+        let params = new URLSearchParams(window.location.search);
+        let meal = params.get("meal");
 
-         <div class ="anusha">
-         <h5>ingridents</h5>
-         <p>${mealData.strIngredient1}</p>
-         <p>${mealData.strIngredient2}</p>
-         <p>${mealData.strIngredient3}</p>
-         <p>${mealData.strIngredient4}</p>
-         <p>${mealData.strIngredient5}</p>
-         <p>${mealData.strIngredient6}</p>
-         <p>${mealData.strIngredient7}</p>
-         <p>${mealData.strIngredient8}</p>
-         <p>${mealData.strIngredient9}</p>
-         <p>${mealData.strIngredient10}</p>
-         <p>${mealData.strIngredient11}</p>
-         <p>${mealData.strIngredient12}</p>
-         <p>${mealData.strIngredient13}</p>
-         <p>${mealData.strIngredient14}</p>
-         <p>${mealData.strIngredient15}</p>
-         <p>${mealData.strIngredient16}</p>
-         <p>${mealData.strIngredient17}</p>
-         <p>${mealData.strIngredient18}</p>
-         <p>${mealData.strIngredient19}</p>
-         <p>${mealData.strIngredient20}</p>
-         </div>
-         </div>
-         </div>
-        `;
+        // Check meal name
+        if (!meal) {
 
-    let measures = "";
-    for (let i = 1; i <= 20; i++) {
-        let measure = mealData[`strMeasure${i}`];
-        if (measure && measure.trim() !== "") {
-            measures += `
-            <p>${measure.trim()}</p>
-        `;
+            inti.innerHTML = `
+                <div class="error">
+                    <h2>Meal not found</h2>
+                    <p>Please select a meal from the second page.</p>
+                </div>
+            `;
+
+            return;
         }
+
+
+        // =================================================
+        // FETCH MEAL FROM MEALDB
+        // =================================================
+
+        let response = await fetch(
+            `https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(meal)}`
+        );
+
+        // Check response
+        if (!response.ok) {
+            throw new Error("Failed to fetch meal");
+        }
+
+        // Convert response to JSON
+        let data = await response.json();
+
+
+        // Check meals
+        if (!data.meals) {
+
+            inti.innerHTML = `
+                <div class="error">
+                    <h2>Meal not found</h2>
+                </div>
+            `;
+
+            return;
+        }
+
+
+        // =================================================
+        // FIND SELECTED MEAL
+        // =================================================
+
+        let mealData = data.meals.find((item) => {
+            return item.strMeal.toLowerCase() === meal.toLowerCase();
+        });
+
+
+        // If meal not found
+        if (!mealData) {
+
+            inti.innerHTML = `
+                <div class="error">
+                    <h2>Meal not found</h2>
+                </div>
+            `;
+
+            return;
+        }
+
+
+        // =================================================
+        // INGREDIENTS
+        // =================================================
+
+        let ingredients = "";
+
+        for (let i = 1; i <= 20; i++) {
+
+            let ingredient =
+                mealData[`strIngredient${i}`];
+
+            if (
+                ingredient &&
+                ingredient.trim() !== ""
+            ) {
+
+                ingredients += `
+                    <p>${ingredient.trim()}</p>
+                `;
+            }
+        }
+
+
+        // =================================================
+        // MEASURES
+        // =================================================
+
+        let measures = "";
+
+        for (let i = 1; i <= 20; i++) {
+
+            let measure =
+                mealData[`strMeasure${i}`];
+
+            if (
+                measure &&
+                measure.trim() !== ""
+            ) {
+
+                measures += `
+                    <p>${measure.trim()}</p>
+                `;
+            }
+        }
+
+
+        // =================================================
+        // INSTRUCTIONS
+        // =================================================
+
+        let instructionList = "";
+
+        let instructions =
+            (mealData.strInstructions || "")
+                .split(".")
+                .filter(value => value.trim() !== "");
+
+
+        for (let instruction of instructions) {
+
+            instructionList += `
+                <div class="inst-item">
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    <p>
+                        ${instruction.trim()}.
+                    </p>
+
+                </div>
+            `;
+        }
+
+
+        // =================================================
+        // DISPLAY MEAL
+        // =================================================
+
+        inti.innerHTML = `
+
+            <div class="meal-des">
+
+                <h4>
+                    🏡 >> ${mealData.strMeal}
+                </h4>
+
+            </div>
+
+
+            <div class="data12">
+
+                <h3>
+                    MEAL DETAILS
+                </h3>
+
+                <hr>
+
+            </div>
+
+
+            <div class="mealcont">
+
+
+                <!-- IMAGE -->
+
+                <div class="iconical">
+
+                    <img
+                        src="${mealData.strMealThumb}"
+                        alt="${mealData.strMeal}"
+                    >
+
+                </div>
+
+
+                <!-- DETAILS -->
+
+                <div class="detailes22">
+
+                    <div class="jhanu">
+
+                        <h3>
+                            ${mealData.strMeal}
+                        </h3>
+
+                        <hr>
+
+                        <h4>
+                            Category:
+                            ${mealData.strCategory || "N/A"}
+                        </h4>
+
+                        <h4>
+                            Area:
+                            ${mealData.strArea || "N/A"}
+                        </h4>
+
+                        <p>
+                            ${mealData.strSource || ""}
+                        </p>
+
+                        <h6>
+                            ${mealData.strTags || ""}
+                        </h6>
+
+
+                        <!-- INGREDIENTS -->
+
+                        <div class="anusha">
+
+                            <h5>
+                                Ingredients
+                            </h5>
+
+                            ${ingredients}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MEASURES -->
+
+            <div class="manu2">
+
+                <h5>
+                    Measure:
+                </h5>
+
+                ${measures}
+
+            </div>
+
+
+            <!-- INSTRUCTIONS -->
+
+            <div class="innner">
+
+                <h5>
+                    Instructions:
+                </h5>
+
+                <div class="instruction-list">
+
+                    ${instructionList}
+
+                </div>
+
+            </div>
+
+        `;
+
     }
 
-    let cc = `
-    <div class="manu2">
-        <h5>Measure:</h5>
-        ${measures}
-    </div>
-`;
+    catch (error) {
 
+        console.log("Third page error:", error);
 
+        inti.innerHTML = `
 
-    let instruList = "";
-    let instructions = mealData.strInstructions
-        .split(".")
-        .filter(value => value.trim() !== "");
+            <div class="error">
 
-    for (let instruction of instructions) {
-        instruList += `
-        <div class="inst-item">
-            <span class="check">✓</span>
-            <p>${instruction.trim()}.</p>
-        </div>
-    `;
+                <h2>
+                    Something went wrong
+                </h2>
+
+                <p>
+                    Please try again later.
+                </p>
+
+            </div>
+
+        `;
     }
-
-    let instruc = `
-    <div class="innner">
-        <h5>Instructions:</h5>
-
-        <div class="instruction-list">
-            ${instruList}
-        </div>
-    </div>
-`;
-    let result = `
-    <div class="mealcont">
-        ${img}
-        ${desc}
-    </div>
-`;
-    let inti = document.getElementById("inti")
-    inti.innerHTML = `  ${name} ${details} ${result} ${cc} ${instruc}`
 }
 
+
+// =====================================================
+// RUN THIRD PAGE FUNCTION
+// =====================================================
+
 getMeal();
-
-
-
-
-
-
-
